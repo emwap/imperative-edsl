@@ -15,5 +15,6 @@ before_install:
   - cabal install alex happy
   - cabal sandbox init
   - cabal sandbox hc-pkg dump
-  - cabal install --only-dep --enable-tests -v2
+  - cabal install --only-dep --enable-tests -v2 --dry-run
+  - cabal install --only-dep --enable-tests
 
