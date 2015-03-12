@@ -15,10 +15,10 @@ before_install:
   - cabal install alex happy
   - cabal sandbox init
   - cabal sandbox hc-pkg dump
-  - cabal install --enable-tests --reinstall --upgrade-dependencies --dry-run -v2 --max-backjumps=-1 --reorder-goals
+  - cabal install --enable-tests --dry-run -v2
 
 install:
-  - cabal install --enable-tests --reinstall --upgrade-dependencies --max-backjumps=-1 --reorder-goals
+  - cabal install --enable-tests
 
 script:
   - cabal test
