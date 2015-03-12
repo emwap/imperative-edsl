@@ -1,0 +1,24 @@
+sudo: false
+
+cache:
+  directories:
+    - .cabal-sandbox
+
+language: haskell
+
+ghc:
+  - 7.8
+  - 7.6
+  - 7.4
+
+before_install:
+  - cabal install alex happy
+  - cabal sandbox init
+  - cabal sandbox hc-pkg dump
+  - cabal install --enable-tests --reinstall --upgrade-dependencies --dry-run -v2 --max-backjumps=-1 --reorder-goals
+
+install:
+  - cabal install --enable-tests --reinstall --upgrade-dependencies --max-backjumps=-1 --reorder-goals
+
+script:
+  - cabal test
